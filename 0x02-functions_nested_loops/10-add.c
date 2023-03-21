@@ -1,16 +1,11 @@
 #include "main.h"
-#include <stdio.h>
-
 /**
- * main - check the code
- *
- * Return: Always 0.
+ * add - sums up two integers
+ * @j: first parameter
+ * @k: second parameter
+ * Return: always the result of summation
  */
-int main(void)
+int add(int j, int k)
 {
-	int n;
-
-	n = add(89, 9);
-	printf("%d\n", n);
-	return (0);
+	return (j + k);
 }
