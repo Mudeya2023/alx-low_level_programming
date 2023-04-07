@@ -2,24 +2,24 @@
 
 /**
  * _strpbrk - returns a pointer to the first coincidence with a sequence
- *  @m: string to review
+ *  @s: string to review
  *  @accept: the sequence
  *
  *  Return: Returns null if there is no sequence
  */
-char *_strpbrk(char *m, char *accept)
+char *_strpbrk(char *s, char *accept)
 {
 	int index, index2, cutter;
 
 	cutter = 0;
-	for (index = 0; m[index] != '\0'; index++)
+	for (index = 0; s[index] != '\0'; index++)
 	{
 		for (index2 = 0; accept[index2] != '\0'; index2++)
 		{
-			if (m[index] == accept[index2])
+			if (s[index] == accept[index2])
 			{
 				cutter += 1;
-				return (&m[index]);
+				return (&s[index]);
 			}
 		}
 	}

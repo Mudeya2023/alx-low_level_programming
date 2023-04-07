@@ -4,21 +4,21 @@
  * _strcmp - compare two strings and return the ascii difference of
  * the first difference, if not returns 0
  *
- * @k1: string to compare
- * @k2: the comparison
+ * @s1: string to compare
+ * @s2: the comparison
  * Return: zero at match
  */
 
-int _strcmp(char *k1, char *k2)
+int _strcmp(char *s1, char *s2)
 {
 	int index;
 	int cmp = 0;
 
-	for (index = 0; *(k1 + index) != '\0'; index++)
+	for (index = 0; *(s1 + index) != '\0'; index++)
 	{
-		if (*(k1 + index) != *(k2 + index))
+		if (*(s1 + index) != *(s2 + index))
 		{
-			cmp = (*(k1 + index) - *(k2 + index));
+			cmp = (*(s1 + index) - *(s2 + index));
 			break;
 		}
 	}

@@ -2,20 +2,20 @@
 
 /**
  * _memset - fills memory with a constant byte
- * @m: the address of memory to print
+ * @s: the address of memory to print
  * @b: the byte to write
- * @s: the number of spaces to write
- * Return: Returns value to memory area m
+ * @n: the number of spaces to write
+ * Return: Returns value to memory area S
  */
 
-char *_memset(char *m, char b, unsigned int s)
+char *_memset(char *s, char b, unsigned int n)
 {
 	int index;
 
-	for (index = 0; s > 0; s--)
+	for (index = 0; n > 0; n--)
 	{
-		*(m + index) = (b + 0);
+		*(s + index) = (b + 0);
 		index++;
 	}
-	return (m);
+	return (s);
 }
