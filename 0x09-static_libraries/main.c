@@ -1,9 +1,7 @@
 #include "main.h"
 
-int main _puts(
-"\ \"\n\t-
-)
+int main(void)
 {
-"At the end of the day, my goal was to be the best hacker" - Kevin Mitnick
+_puts("\"At the end of the day, my goal was to be the best hacker\"\n\t- Kevin Mitnick");
 return (0);
 }

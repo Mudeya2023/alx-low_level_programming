@@ -2,7 +2,7 @@
 #define MAIN_H
 
 /**
- * all the functional prototypes of the specific files in my main.h header file.
+ * all functional prototypes of the specific file.
  */
 
 int _putchar(char c);
