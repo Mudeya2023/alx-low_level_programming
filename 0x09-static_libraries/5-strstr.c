@@ -2,11 +2,11 @@
 #include <stdio.h>
 
 /**
- * _strstr - returns the first substring coincidence.
- * @haystack: string where you are looking for 
- * @needle: subtring to find
+ *_strstr - returns the first substring coincidence.
+ *@haystack: string where you are looking for 
+ *@needle: subtring to find
  *
- * Return: Always 0.
+ *Return: Always 0.
  */
 
 #include <stdio.h>
@@ -35,4 +35,3 @@ char *_strstr(char *haystack, char *needle)
 		return (haystack);
 	return (NULL);
 }
-
