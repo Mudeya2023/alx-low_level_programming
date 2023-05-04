@@ -1,10 +1,10 @@
 #ifndef MAIN_H
 #define MAIN_H
 /**
-prototype of 0x14. C - Bit manipulation
-*function that converts a binary number to an unsigned int
-*function that prints the binary representation of a number.
-*function that returns the value of a bit at a given index.
+* prototype of 0x14. C - Bit manipulation
+* function that converts a binary number to an unsigned int
+* function that prints the binary representation of a number.
+* function that returns the value of a bit at a given index.
 */
 int _putchar(char c);
 unsigned int binary_to_uint(const char *b);
