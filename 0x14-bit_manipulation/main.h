@@ -1,5 +1,9 @@
 #ifndef MAIN_H
 #define MAIN_H
+
+#include <stdlib.h>
+#include <unistd.h>
+
 /**
 * prototype of 0x14. C - Bit manipulation
 * function that converts a binary number to an unsigned int
