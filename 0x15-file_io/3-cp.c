@@ -1,14 +1,15 @@
 #include "main.h"
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 char *create_buffer(char *file);
 void close_file(int fd);
 
 /**
- * create_buffer - allocates 1024 bytes for buffer.
- * @file: is the name of the file buffers storing chars
- * Return: pointer is returned to the newly allocated buffer.
+ * create_buffer - Allocates 1024 bytes for a buffer.
+ * @file: The name of the file buffer is storing chars for.
+ *
+ * Return: A pointer to the newly-allocated buffer.
  */
 char *create_buffer(char *file)
 {
@@ -19,7 +20,7 @@ char *create_buffer(char *file)
 	if (buffer == NULL)
 	{
 		dprintf(STDERR_FILENO,
-				"Error: Can't write to %s\n", file);
+			"Error: Can't write to %s\n", file);
 		exit(99);
 	}
 
@@ -27,16 +28,16 @@ char *create_buffer(char *file)
 }
 
 /**
- * close_file - file descriptors close
- * @fd: is the closed descriptor
+ * close_file - Closes file descriptors.
+ * @fd: The file descriptor to be closed.
  */
 void close_file(int fd)
 {
-	int cl;
+	int c;
 
-	cl = close(fd);
+	c = close(fd);
 
-	if (cl == -1)
+	if (c == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(100);
@@ -44,20 +45,20 @@ void close_file(int fd)
 }
 
 /**
- * main - this copies contents from file to file
- * @argc: is number of arguments in a program
- * @argv: points to the arguments
+ * main - Copies the contents of a file to another file.
+ * @argc: The number of arguments supplied to the program.
+ * @argv: An array of pointers to the arguments.
  *
- * Return: 0 (success)
+ * Return: 0 on success.
  *
- * Description: If the argument count is incorrect - 97 (exit code)
- * file does not exist or not readable - 98 (exit code)
- * file cannot be created or written - 99 (exit code)
- * file cannot be closed - 100 (exit)
+ * Description: If the argument count is incorrect - exit code 97.
+ * If file_from does not exist or cannot be read - exit code 98.
+ * If file_to cannot be created or written to - exit code 99.
+ * If file_to or file_from cannot be closed - exit code 100.
  */
 int main(int argc, char *argv[])
 {
-	int from, to, re;
+	int from, to, r, w;
 	char *buffer;
 
 	if (argc != 3)
@@ -68,22 +69,34 @@ int main(int argc, char *argv[])
 
 	buffer = create_buffer(argv[2]);
 	from = open(argv[1], O_RDONLY);
-	re = read(from, buffer, 1024);
-	to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0064);
+	r = read(from, buffer, 1024);
+	to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
 	do {
-		if (from == -1 || re == -1)
+		if (from == -1 || r == -1)
 		{
 			dprintf(STDERR_FILENO,
-					"Error: Can't read from file %s\n", argv[1]);
+				"Error: Can't read from file %s\n", argv[1]);
 			free(buffer);
 			exit(98);
 		}
 
-		re = read(from, buffer, 1024);
+		w = write(to, buffer, r);
+		if (to == -1 || w == -1)
+		{
+			dprintf(STDERR_FILENO,
+				"Error: Can't write to %s\n", argv[2]);
+			free(buffer);
+			exit(99);
+		}
+
+		r = read(from, buffer, 1024);
 		to = open(argv[2], O_WRONLY | O_APPEND);
-	} while (re > 0);
+
+	} while (r > 0);
+
 	free(buffer);
+	close_file(from);
 	close_file(to);
 
 	return (0);
